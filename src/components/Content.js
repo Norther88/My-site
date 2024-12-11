@@ -9,30 +9,33 @@ function Content() {
    const { t } = useTranslation();
 
    const sliderSettings = {
-        dots: true, // Включаем отображение точек
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1, // Показываем 1 слайд за раз (в одном слайде будет 3 элемента)
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 7000,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 1, // На экранах меньше 1024px — 1 слайд
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1, // На экранах меньше 768px — 1 слайд
-                    slidesToScroll: 1
-                }
+    dots: true, // Включаем отображение точек
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2, // Показываем 2 слайда за раз по умолчанию
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 7000,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 2, // На экранах меньше 1024px показываем 2 слайда
+                slidesToScroll: 1
             }
-        ]
-    };
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 1, // На экранах меньше 768px показываем 1 слайд
+                slidesToScroll: 1,
+                // Здесь увеличиваем количество слайдов до 4
+                centerMode: true, // Добавляем возможность центрировать слайды
+                focusOnSelect: true // Фокусируемся на слайде при клике
+            }
+        }
+    ]
+};
 
     return (
         <>
@@ -131,57 +134,62 @@ function Content() {
 
                             {/* React Slick Carousel */}
                             <Slider {...sliderSettings}>
-                                {/* Слайд 1 */}
-                                <div className="testimonials-group d-flex justify-content-between">
-                                    <div className="testimonials-thumb d-flex">
-                                        <div className="testimonials-image">
-                                            <img src="/images/testimonials/Ekaterina.png" className="img-fluid" alt="person-review"/>
-                                        </div>
-                                        <div className="testimonials-info">
-                                            <p>{t('testimonials.ekaterina.text')}</p>
-                                            <h6 className="mb-0">{t('testimonials.ekaterina.name')}</h6>
-                                            <span>{t('testimonials.ekaterina.position')}</span>
-                                        </div>
-                                    </div>
+    {/* Слайд 1 */}
+    <div className="testimonials-group d-flex justify-content-between">
+        <div className="testimonials-thumb d-flex">
+            <div className="testimonials-image">
+                <img src="/images/testimonials/Ekaterina.png" className="img-fluid" alt="person-review"/>
+            </div>
+            <div className="testimonials-info">
+                <p>{t('testimonials.ekaterina.text')}</p>
+                <h6 className="mb-0">{t('testimonials.ekaterina.name')}</h6>
+                <span>{t('testimonials.ekaterina.position')}</span>
+            </div>
+        </div>
+    </div>
 
-                                    <div className="testimonials-thumb d-flex">
-                                        <div className="testimonials-image">
-                                            <img src="/images/testimonials/testimonial-image02.jpg" className="img-fluid" alt="person-review"/>
-                                        </div>
-                                        <div className="testimonials-info">
-                                            <p>{t('testimonials.elena.text')}</p>
-                                            <h6 className="mb-0">{t('testimonials.elena.name')}</h6>
-                                            <span>{t('testimonials.elena.position')}</span>
-                                        </div>
-                                    </div>
-                                </div>
+    {/* Слайд 2 */}
+    <div className="testimonials-group d-flex justify-content-between">
+        <div className="testimonials-thumb d-flex">
+            <div className="testimonials-image">
+                <img src="/images/testimonials/testimonial-image02.jpg" className="img-fluid" alt="person-review"/>
+            </div>
+            <div className="testimonials-info">
+                <p>{t('testimonials.elena.text')}</p>
+                <h6 className="mb-0">{t('testimonials.elena.name')}</h6>
+                <span>{t('testimonials.elena.position')}</span>
+            </div>
+        </div>
+    </div>
 
-                                {/* Слайд 2 */}
-                                <div className="testimonials-group d-flex justify-content-between">
-                                    <div className="testimonials-thumb d-flex">
-                                        <div className="testimonials-image">
-                                            <img src="/images/testimonials/Ilya.png" className="img-fluid" alt="person-review"/>
-                                        </div>
-                                        <div className="testimonials-info">
-                                            <p>{t('testimonials.ilya.text')}</p>
-                                            <h6 className="mb-0">{t('testimonials.ilya.name')}</h6>
-                                            <span>{t('testimonials.ilya.position')}</span>
-                                        </div>
-                                    </div>
+    {/* Слайд 3 */}
+    <div className="testimonials-group d-flex justify-content-between">
+        <div className="testimonials-thumb d-flex">
+            <div className="testimonials-image">
+                <img src="/images/testimonials/Ilya.png" className="img-fluid" alt="person-review"/>
+            </div>
+            <div className="testimonials-info">
+                <p>{t('testimonials.ilya.text')}</p>
+                <h6 className="mb-0">{t('testimonials.ilya.name')}</h6>
+                <span>{t('testimonials.ilya.position')}</span>
+            </div>
+        </div>
+    </div>
 
-                                    <div className="testimonials-thumb d-flex">
-                                        <div className="testimonials-image">
-                                            <img src="/images/testimonials/Anastasiya.png" className="img-fluid" alt="person-review"/>
-                                        </div>
-                                        <div className="testimonials-info">
-                                            <p>{t('testimonials.anastasia.text')}</p>
-                                            <h6 className="mb-0">{t('testimonials.anastasia.name')}</h6>
-                                            <span>{t('testimonials.anastasia.position')}</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </Slider>
+    {/* Слайд 4 */}
+    <div className="testimonials-group d-flex justify-content-between">
+        <div className="testimonials-thumb d-flex">
+            <div className="testimonials-image">
+                <img src="/images/testimonials/Anastasiya.png" className="img-fluid" alt="person-review"/>
+            </div>
+            <div className="testimonials-info">
+                <p>{t('testimonials.anastasia.text')}</p>
+                <h6 className="mb-0">{t('testimonials.anastasia.name')}</h6>
+                <span>{t('testimonials.anastasia.position')}</span>
+            </div>
+        </div>
+    </div>
+</Slider>
                         </div>
                     </div>
                 </div>

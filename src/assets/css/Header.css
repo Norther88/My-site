@@ -1,0 +1,28 @@
+.active {
+    color: #fffefe !important;
+    text-decoration: underline;
+    text-decoration-color: #FFD500;
+}
+
+.nav-link:hover{
+	color: yellow;
+}
+
+.navbar-brand:hover {
+  color: #FFD500 !important;
+}
+
+.language-switcher .active-lan {
+  font-weight: bold;
+  color: #ffd500; /* Можно поменять на цвет, который вам нравится */
+  text-decoration: underline; /* Можно добавить подчеркивание для выделения */
+}
+
+.language-switcher button {
+  margin: 0 5px;
+    font-weight: 600;
+}
+
+.language-switcher button:hover{
+color: white;
+}

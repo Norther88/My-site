@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 function SpeedTypingTest({ showModal, onClose }) {
@@ -19,14 +19,22 @@ function SpeedTypingTest({ showModal, onClose }) {
     t("speedTypingText5")
   ], [t]);
 
-  // Выбор случайного текста
-  const getRandomText = () => texts[Math.floor(Math.random() * texts.length)];
+  // Оборачиваем getRandomText в useCallback, чтобы избежать его пересоздания при каждом рендере
+  const getRandomText = useCallback(() => texts[Math.floor(Math.random() * texts.length)], [texts]);
+
+  // Оборачиваем calculateSpeed в useCallback, чтобы избежать его пересоздания при каждом рендере
+  const calculateSpeed = useCallback(() => {
+    const trimmedText = inputText.trim(); // Убираем лишние пробелы
+    const wordsTyped = trimmedText.split(/\s+/).length; // Подсчитываем слова
+    const wpm = (wordsTyped / 5) / ((30 - timeLeft) / 60); // Считаем скорость в словах в минуту
+    setSpeed(wpm.toFixed(2));
+  }, [inputText, timeLeft]);
 
   useEffect(() => {
     if (!started) {
       setTextToType(getRandomText()); // Устанавливаем случайный текст при старте
     }
-  }, [texts, started]);
+  }, [texts, started, getRandomText]);
 
   useEffect(() => {
     let interval;
@@ -38,7 +46,7 @@ function SpeedTypingTest({ showModal, onClose }) {
       calculateSpeed();
     }
     return () => clearInterval(interval);
-  }, [started, timeLeft]);
+  }, [started, timeLeft, calculateSpeed]);
 
   const handleChange = (event) => {
     const value = event.target.value;
@@ -69,13 +77,6 @@ function SpeedTypingTest({ showModal, onClose }) {
     setStarted(false); // Тест не начинается сразу
     setSpeed(0); // Сбрасываем скорость
     setErrors(0); // Сбрасываем количество ошибок
-  };
-
-  const calculateSpeed = () => {
-    const trimmedText = inputText.trim(); // Убираем лишние пробелы
-    const wordsTyped = trimmedText.split(/\s+/).length; // Подсчитываем слова
-    const wpm = (wordsTyped / 5) / ((30 - timeLeft) / 60); // Считаем скорость в словах в минуту
-    setSpeed(wpm.toFixed(2));
   };
 
   // Функция для проверки ошибок
@@ -149,7 +150,7 @@ function SpeedTypingTest({ showModal, onClose }) {
             )}
             {timeLeft === 0 && <p style={{ marginTop: '20px' }}>Ваша скорость: {speed} слов/мин</p>}
             {speed > 0 && !started && <p style={{ marginTop: '20px' }}>Ваша скорость: {speed} слов/мин</p>}
-            <p>Ошибки: {errors}</p> 
+            <p>Ошибки: {errors}</p>
           </div>
         </div>
       </div>

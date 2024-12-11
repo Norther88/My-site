@@ -1,5 +1,5 @@
 import React from "react";
-import { Accordion, Card } from 'react-bootstrap'; 
+import { Accordion } from 'react-bootstrap'; 
 import { useTranslation } from 'react-i18next';  // Импортируем useTranslation
 
 function FAQ() {
@@ -14,7 +14,7 @@ function FAQ() {
 
             <Accordion defaultActiveKey="0">
               {t('faqItems', { returnObjects: true }).map((item, index) => (
-                <Accordion.Item eventKey={String(index)} key={index}> {/* Card удалён как избыточный */}
+                <Accordion.Item eventKey={String(index)} key={index}> 
                   <Accordion.Header>{item.question}</Accordion.Header>
                   <Accordion.Body>{item.answer}</Accordion.Body>
                 </Accordion.Item>

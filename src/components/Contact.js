@@ -80,7 +80,24 @@ function Contact() {
                         </form>
                     </div>
 
-                    {/* Остальная часть вашего кода... */}
+<div className="mx-auto col-lg-4 col-md-6 col-12">
+                        <h3 className="my-4 pt-4 pt-lg-0">{t('contact.contactTitle')}</h3>
+                        <a href="https://t.me/Devbutler_bot" target="_blank" rel="noopener noreferrer" className="mb-1 tgm-bot">{t('contact.telegram')}</a> /
+                        <a href="https://wa.me/381631754952/" target="_blank" rel="noopener noreferrer" className="mb-1 wsa-bot"> What'sApp</a>
+                        <p>
+                            <a className="mail-bot" href="mailto:vaedev1291@gmail.com">
+                                {t('contact.sendEmail')}
+                                <i className="fas fa-arrow-right custom-icon"></i>
+                            </a>
+                        </p>
+
+                        <ul className="social-links mt-2">
+                            <li><a href="https://hh.ru/resume/1216b557ff0ca2c1b20039ed1f6d677151354b" target="_blank" rel="noopener noreferrer" className="fab fa-headhunter">hh</a></li>
+                            <li><a href="https://www.linkedin.com/in/aleksandr-v-3a787884/" target="_blank" rel="noopener noreferrer" className="fab fa-linkedin"><span class="hidden-text">linkedin</span></a></li>
+                        </ul>
+
+                        <p className="copyright-text mt-5 pt-3">Copyright &copy; 2024 Alex Developer's Resume</p>
+                    </div>
                 </div>
             </div>
         </section>

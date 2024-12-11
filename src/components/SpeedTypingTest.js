@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 function SpeedTypingTest({ showModal, onClose }) {
@@ -10,21 +10,23 @@ function SpeedTypingTest({ showModal, onClose }) {
   const [textToType, setTextToType] = useState(''); // Случайный текст
   const [errors, setErrors] = useState(0); // Количество ошибок
 
-  // Массив с текстами для набора
-  const texts = [
-     t("speedTypingText1"),
+  // Массив с текстами для набора, мемоизируем, чтобы избежать пересоздания на каждом рендере
+  const texts = useMemo(() => [
+    t("speedTypingText1"),
     t("speedTypingText2"),
     t("speedTypingText3"),
     t("speedTypingText4"),
     t("speedTypingText5")
-  ];
+  ], [t]);
 
   // Выбор случайного текста
   const getRandomText = () => texts[Math.floor(Math.random() * texts.length)];
 
   useEffect(() => {
-    setTextToType(getRandomText()); // Устанавливаем случайный текст при старте
-  }, []);
+    if (!started) {
+      setTextToType(getRandomText()); // Устанавливаем случайный текст при старте
+    }
+  }, [texts, started]);
 
   useEffect(() => {
     let interval;

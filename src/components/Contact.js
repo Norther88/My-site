@@ -73,7 +73,7 @@ function Contact() {
 
                         <ul className="social-links mt-2">
                             <li><a href="https://hh.ru/resume/1216b557ff0ca2c1b20039ed1f6d677151354b" target="_blank" rel="noopener noreferrer" className="fab fa-headhunter">hh</a></li>
-                            <li><a href="https://www.linkedin.com/in/aleksandr-v-3a787884/" target="_blank" rel="noopener noreferrer" className="fab fa-linkedin"></a></li>
+                            <li><a href="https://www.linkedin.com/in/aleksandr-v-3a787884/" target="_blank" rel="noopener noreferrer" className="fab fa-linkedin"><span class="hidden-text">linkedin</span></a></li>
                         </ul>
 
                         <p className="copyright-text mt-5 pt-3">Copyright &copy; 2024 Alex Developer's Resume</p>

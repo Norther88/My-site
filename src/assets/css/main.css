@@ -550,6 +550,10 @@ https://www.tooplate.com/view/2120-ben-resume
     margin: 5px 5px 5px 0;
   }
 
+ .hidden-text {
+    display: none;
+  }
+  
   .social-links a:hover {
     color: red;
   }

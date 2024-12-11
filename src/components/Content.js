@@ -135,7 +135,7 @@ function Content() {
                                 <div className="testimonials-group d-flex justify-content-between">
                                     <div className="testimonials-thumb d-flex">
                                         <div className="testimonials-image">
-                                            <img src="/images/testimonials/Ekaterina.png" className="img-fluid" alt="testimonial image"/>
+                                            <img src="/images/testimonials/Ekaterina.png" className="img-fluid" alt="person-review"/>
                                         </div>
                                         <div className="testimonials-info">
                                             <p>{t('testimonials.ekaterina.text')}</p>
@@ -146,7 +146,7 @@ function Content() {
 
                                     <div className="testimonials-thumb d-flex">
                                         <div className="testimonials-image">
-                                            <img src="/images/testimonials/testimonial-image02.jpg" className="img-fluid" alt="testimonial image"/>
+                                            <img src="/images/testimonials/testimonial-image02.jpg" className="img-fluid" alt="person-review"/>
                                         </div>
                                         <div className="testimonials-info">
                                             <p>{t('testimonials.elena.text')}</p>
@@ -160,7 +160,7 @@ function Content() {
                                 <div className="testimonials-group d-flex justify-content-between">
                                     <div className="testimonials-thumb d-flex">
                                         <div className="testimonials-image">
-                                            <img src="/images/testimonials/Ilya.png" className="img-fluid" alt="testimonial image"/>
+                                            <img src="/images/testimonials/Ilya.png" className="img-fluid" alt="person-review"/>
                                         </div>
                                         <div className="testimonials-info">
                                             <p>{t('testimonials.ilya.text')}</p>
@@ -171,7 +171,7 @@ function Content() {
 
                                     <div className="testimonials-thumb d-flex">
                                         <div className="testimonials-image">
-                                            <img src="/images/testimonials/Anastasiya.png" className="img-fluid" alt="testimonial image"/>
+                                            <img src="/images/testimonials/Anastasiya.png" className="img-fluid" alt="person-review"/>
                                         </div>
                                         <div className="testimonials-info">
                                             <p>{t('testimonials.anastasia.text')}</p>

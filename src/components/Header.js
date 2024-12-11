@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Button, Container } from 'react-bootstrap';
 import { Link } from 'react-scroll';
-import { useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'; // 'name' и 'profession' убраны, так как они не используются
 import '../assets/css/Header.css';
 
 function Header() {
-  const { name, profession } = useSelector((state) => state);
-
   const [activeSection, setActiveSection] = useState('');
   const [scrolled, setScrolled] = useState(false);
 
@@ -76,7 +73,7 @@ function Header() {
 
             {/* Кнопка для загрузки CV */}
             <Button variant="primary" className="custom-btn btn" href={i18n.language === 'en' ? '/assets/documents/cv-vae-en.pdf' : '/assets/documents/cv-vae-ru.pdf'} download>
-                {t('header.downloadCV')}
+              {t('header.downloadCV')}
             </Button>
 
             {/* Кнопки переключения языка */}

@@ -21,7 +21,8 @@ function Content() {
             breakpoint: 1024,
             settings: {
                 slidesToShow: 2, // На экранах меньше 1024px показываем 2 слайда
-                slidesToScroll: 2 // Перелистываем 2 слайда за раз
+                slidesToScroll: 2, // Перелистываем 2 слайда за раз
+                centerMode: false, // Отключаем центрирование
             }
         },
         {
@@ -29,8 +30,10 @@ function Content() {
             settings: {
                 slidesToShow: 1, // На экранах меньше 768px показываем 1 слайд
                 slidesToScroll: 1, // Перелистываем 1 слайд за раз
-                centerMode: true, // Центрируем слайды
-                focusOnSelect: true // При клике на слайд фокусируемся на нем
+                centerMode: false, // Отключаем центрирование
+                focusOnSelect: true, // При клике на слайд фокусируемся на нем
+                adaptiveHeight: true, // Подстраиваем высоту слайдов по содержимому
+                arrows: true, // Показываем стрелки для перехода
             }
         }
     ]

@@ -13,7 +13,7 @@ function Content() {
     infinite: true,
     speed: 500,
     slidesToShow: 2, // Показываем 2 слайда за раз по умолчанию
-    slidesToScroll: 1,
+    slidesToScroll: 2, // Перелистываем 2 слайда за раз на большом экране
     autoplay: true,
     autoplaySpeed: 7000,
     responsive: [
@@ -21,17 +21,16 @@ function Content() {
             breakpoint: 1024,
             settings: {
                 slidesToShow: 2, // На экранах меньше 1024px показываем 2 слайда
-                slidesToScroll: 1
+                slidesToScroll: 2 // Перелистываем 2 слайда за раз
             }
         },
         {
             breakpoint: 768,
             settings: {
                 slidesToShow: 1, // На экранах меньше 768px показываем 1 слайд
-                slidesToScroll: 1,
-                // Здесь увеличиваем количество слайдов до 4
-                centerMode: true, // Добавляем возможность центрировать слайды
-                focusOnSelect: true // Фокусируемся на слайде при клике
+                slidesToScroll: 1, // Перелистываем 1 слайд за раз
+                centerMode: true, // Центрируем слайды
+                focusOnSelect: true // При клике на слайд фокусируемся на нем
             }
         }
     ]

@@ -30,13 +30,10 @@ function Contact() {
                 <div className="row">
                     <div className="col-lg-6 col-md-6 col-12">
                         <form 
-                            onSubmit={handleSubmit} 
-                            className="contact-form webform" 
-                            name="contact" 
+                            className="contact-form webform"
                             method="POST"
-                            action="https://formspree.io/f/mjkvdlpv" // Замените на ваш Formspree ID
-                        >
-                            <div className="form-group">
+                            action="https://formspree.io/f/mjkvdlpv">
+                            <div className="form-group d-flex flex-column-reverse">
                                 <input 
                                     type="text" 
                                     className="form-control" 
@@ -44,32 +41,38 @@ function Contact() {
                                     placeholder={t('contact.fullName')}  
                                     value={formData.name} 
                                     onChange={handleChange}
+                                    id="cf-name" 
                                 />
+                                 <label htmlFor="cf-name" className="webform-label">{t('contact.fullName')}</label>
                             </div>
 
-                            <div className="form-group">
+                            <div className="form-group d-flex flex-column-reverse">
                                 <input 
                                     type="email" 
                                     className="form-control" 
                                     name="email" 
+                                    id="cf-email" 
                                     placeholder={t('contact.yourEmail')}  
                                     value={formData.email} 
                                     onChange={handleChange}
                                 />
+                                 <label htmlFor="cf-email" className="webform-label">{t('contact.yourEmail')}</label>
                             </div>
 
-                            <div className="form-group">
+                            <div className="form-group d-flex flex-column-reverse">
                                 <textarea 
                                     className="form-control" 
                                     rows="5" 
                                     name="message" 
+                                    id="cf-message"
                                     placeholder={t('contact.message')}  
                                     value={formData.message} 
                                     onChange={handleChange}
                                 />
+                                <label htmlFor="cf-message" className="webform-label">{t('contact.message')}</label>
                             </div>
 
-                            <button type="submit" className="form-control">
+                            <button type="submit" className="form-control" id="submit-button" name="submit">
                                 {t('contact.send')}
                             </button>
                         </form>

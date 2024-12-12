@@ -35,7 +35,7 @@ function Contact() {
                             name="contact" 
                             method="POST"
                             data-netlify="true" 
-                            action="/" // Указываем путь для успешной отправки формы
+                            action="/contact" // Указываем путь для успешной отправки формы
                         >
                         <input type="hidden" name="form-name" value="contact" />
                             <div className="form-group d-flex flex-column-reverse">

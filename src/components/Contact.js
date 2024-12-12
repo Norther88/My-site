@@ -29,7 +29,7 @@ function Contact() {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-6 col-md-6 col-12">
-                        <form onSubmit={handleSubmit} className="contact-form webform" name="contact" method="POST" data-netlify="true" action="/action" netlify>
+                        <form onSubmit={handleSubmit} className="contact-form webform" name="contact" method="POST" data-netlify="true" action="/" netlify>
                         <input type="hidden" name="form-name" value="contact" />
                             <div className="form-group d-flex flex-column-reverse">
                                 <input type="text" className="form-control" name="name" id="cf-name" placeholder={t('contact.fullName')}  value={formData.name} onChange={handleChange}/>

@@ -62,6 +62,7 @@ https://www.tooplate.com/view/2120-ben-resume
 
   body {
     font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
   }
 
 
@@ -643,6 +644,10 @@ https://www.tooplate.com/view/2120-ben-resume
     .hero-text {
       position: relative;
       top: 1.5rem;
+    }
+
+    .profile-list li{
+      display: flex;
     }
   }
 

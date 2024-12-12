@@ -29,51 +29,20 @@ function Contact() {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-6 col-md-6 col-12">
-                        <form 
-                            onSubmit={handleSubmit} 
-                            className="contact-form webform" 
-                            name="contact" 
-                            method="POST"
-                            data-netlify="true" 
-                            action="/contact" // Указываем путь для успешной отправки формы
-                        >
+                        <form onSubmit={handleSubmit} className="contact-form webform" name="contact" method="POST" data-netlify="true" action="/" netlify>
                         <input type="hidden" name="form-name" value="contact" />
                             <div className="form-group d-flex flex-column-reverse">
-                                <input 
-                                    type="text"  
-                                    className="form-control"  
-                                    name="name"  
-                                    id="cf-name" 
-                                    placeholder={t('contact.fullName')}  
-                                    value={formData.name} 
-                                    onChange={handleChange} 
-                                />
+                                <input type="text" className="form-control" name="name" id="cf-name" placeholder={t('contact.fullName')}  value={formData.name} onChange={handleChange}/>
                                 <label htmlFor="cf-name" className="webform-label">{t('contact.fullName')}</label>
                             </div>
 
                             <div className="form-group d-flex flex-column-reverse">
-                                <input 
-                                    type="email" 
-                                    className="form-control"  
-                                    name="email" 
-                                    id="cf-email"  
-                                    placeholder={t('contact.yourEmail')} 
-                                    value={formData.email} 
-                                    onChange={handleChange} 
-                                />
+                                <input type="email" className="form-control" name="email" id="cf-email" placeholder={t('contact.yourEmail')}  value={formData.email} onChange={handleChange}/>
                                 <label htmlFor="cf-email" className="webform-label">{t('contact.yourEmail')}</label>
                             </div>
 
                             <div className="form-group d-flex flex-column-reverse">
-                                <textarea 
-                                    className="form-control" 
-                                    rows="5" 
-                                    name="message" 
-                                    id="cf-message"  
-                                    placeholder={t('contact.message')}  
-                                    value={formData.message} 
-                                    onChange={handleChange}
-                                />
+                                <textarea className="form-control" rows="5" name="message" id="cf-message" placeholder={t('contact.message')} value={formData.message} onChange={handleChange}/>
                                 <label htmlFor="cf-message" className="webform-label">{t('contact.message')}</label>
                             </div>
 

@@ -10,6 +10,8 @@ function Contact() {
         message: '',
     });
 
+    const [status, setStatus] = useState(''); // Статус для отображения сообщения
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -17,7 +19,30 @@ function Contact() {
         });
     };
 
-  
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Предотвращает стандартное поведение формы
+
+        try {
+            const response = await fetch('https://formspree.io/f/mjkvdlpv', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setStatus('success');
+                setFormData({ name: '', email: '', message: '' }); // Сбросить данные формы
+            } else {
+                setStatus('error');
+            }
+        } catch (error) {
+            setStatus('error');
+            console.error('Ошибка при отправке формы:', error);
+        }
+    };
+
     return (
         <section className="contact section-padding pt-0" id="contact">
             <div className="container">
@@ -25,8 +50,8 @@ function Contact() {
                     <div className="col-lg-6 col-md-6 col-12">
                         <form 
                             className="contact-form webform"
-                            method="POST"
-                            action="https://formspree.io/f/mjkvdlpv">
+                            onSubmit={handleSubmit}
+                        >
                             <div className="form-group d-flex flex-column-reverse">
                                 <input 
                                     type="text" 
@@ -36,6 +61,7 @@ function Contact() {
                                     value={formData.name} 
                                     onChange={handleChange}
                                     id="cf-name" 
+                                    required
                                 />
                                  <label htmlFor="cf-name" className="webform-label">{t('contact.fullName')}</label>
                             </div>
@@ -49,6 +75,7 @@ function Contact() {
                                     placeholder={t('contact.yourEmail')}  
                                     value={formData.email} 
                                     onChange={handleChange}
+                                    required
                                 />
                                  <label htmlFor="cf-email" className="webform-label">{t('contact.yourEmail')}</label>
                             </div>
@@ -62,6 +89,7 @@ function Contact() {
                                     placeholder={t('contact.message')}  
                                     value={formData.message} 
                                     onChange={handleChange}
+                                    required
                                 />
                                 <label htmlFor="cf-message" className="webform-label">{t('contact.message')}</label>
                             </div>
@@ -70,6 +98,10 @@ function Contact() {
                                 {t('contact.send')}
                             </button>
                         </form>
+
+                        {/* Отображение статуса отправки */}
+                        {status === 'success' && <p className="success-message">{t('contact.success')}</p>}
+                        {status === 'error' && <p className="error-message">{t('contact.error')}</p>}
                     </div>
 
 <div className="mx-auto col-lg-4 col-md-6 col-12">

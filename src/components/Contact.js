@@ -33,6 +33,7 @@ function Contact() {
     name="contact" 
     method="POST" 
     data-netlify="true"
+    action="/"
 >
     <input type="hidden" name="form-name" value="contact" />
 

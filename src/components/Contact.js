@@ -17,13 +17,7 @@ function Contact() {
         });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Форма будет отправлена через Formspree
-        alert(t('contact.success'));
-        setFormData({ name: '', email: '', message: '' });
-    };
-
+  
     return (
         <section className="contact section-padding pt-0" id="contact">
             <div className="container">

@@ -37,9 +37,19 @@ function Contact() {
             } else {
                 setStatus('error');
             }
+
+            // Скрыть статус через 20 секунд
+            setTimeout(() => {
+                setStatus('');
+            }, 20000); // 20000 миллисекунд = 20 секунд
         } catch (error) {
             setStatus('error');
             console.error('Ошибка при отправке формы:', error);
+
+            // Скрыть статус через 20 секунд
+            setTimeout(() => {
+                setStatus('');
+            }, 20000); // 20000 миллисекунд = 20 секунд
         }
     };
 

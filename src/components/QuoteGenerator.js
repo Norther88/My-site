@@ -8,23 +8,30 @@ function QuoteGenerator({ closeModal }) {
 
   // Функция для получения цитаты
   const fetchQuote = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch('https://api.quotable.io/random');
-      if (!response.ok) {
-        throw new Error(`Ошибка HTTP: ${response.status}`);
-      }
-      const data = await response.json();
-      setQuote(data.content || "Цитата не найдена");
-      setAuthor(data.author || "Автор неизвестен");
-    } catch (error) {
-      console.error("Ошибка при загрузке цитаты:", error);
-      setQuote("Не удалось загрузить цитату. Попробуйте снова.");
-      setAuthor("");
-    } finally {
-      setLoading(false);
+  setLoading(true);
+  try {
+    const response = await fetch('https://api.quotable.io/random', { cache: 'no-store' }); // Отключаем кэширование
+    if (!response.ok) {
+      throw new Error(`Ошибка HTTP: ${response.status}`);
     }
-  };
+    const data = await response.json();
+
+    // Проверяем структуру данных
+    if (data.content && data.author) {
+      setQuote(data.content);
+      setAuthor(data.author);
+    } else {
+      setQuote("Цитата не найдена");
+      setAuthor("Автор неизвестен");
+    }
+  } catch (error) {
+    console.error("Ошибка при загрузке цитаты:", error.message);
+    setQuote("Не удалось загрузить цитату. Попробуйте снова.");
+    setAuthor("");
+  } finally {
+    setLoading(false);
+  }
+};
 
   // Функция для сброса таймера и получения новой цитаты
   const resetTimer = () => {

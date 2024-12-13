@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { quotes } from './Quotes'; // Импортируем цитаты из файла
 
@@ -10,7 +10,7 @@ function QuoteGenerator({ closeModal }) {
   const { t, i18n } = useTranslation();
 
   // Функция для получения случайной цитаты
-  const fetchQuote = () => {
+  const fetchQuote = useCallback(() => {
     setLoading(true);
     // Получаем текущий язык
     const currentLanguage = i18n.language || 'en';
@@ -20,7 +20,7 @@ function QuoteGenerator({ closeModal }) {
     setQuote(selectedQuote.quote);
     setAuthor(selectedQuote.author);
     setLoading(false);
-  };
+  }, [i18n.language]); // Добавляем i18n.language в зависимости
 
   // Функция для сброса таймера и получения новой цитаты
   const resetTimer = () => {
@@ -45,7 +45,7 @@ function QuoteGenerator({ closeModal }) {
   // Эффект для получения цитаты при загрузке модального окна
   useEffect(() => {
     fetchQuote();
-  }, [i18n.language]); // Перезагружаем цитату при смене языка
+  }, [fetchQuote]); // Используем fetchQuote как зависимость
 
   return (
     <div style={modalOverlayStyle}>

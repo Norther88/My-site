@@ -640,6 +640,9 @@ https://www.tooplate.com/view/2120-ben-resume
   }
 
   @media screen and (max-width: 768px) {
+    body{
+      width: 100%;
+    }
 
     .hero-text {
       position: relative;

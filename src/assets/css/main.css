@@ -650,9 +650,9 @@ https://www.tooplate.com/view/2120-ben-resume
       display: flex;
     }
 
-    .quote-app{
+   /* .quote-app{
       display: none !important;
-    }
+    }*/
   }
 
   @media screen and (max-width: 480px) {

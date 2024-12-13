@@ -61,6 +61,12 @@
       "position": "Head of the Online Store Department at Auto-Component"
     }
   },
+  "quotegenerator": {
+    "title": "Rundom quote",
+    "load": "Loading...",
+    "otherquote": "Get another quote",
+    "timerMessage": "The quote will disappear after {{count}}"
+  },
 "contact": {
     "fullName": "Full Name",
     "yourEmail": "Your Email",
@@ -110,5 +116,15 @@
   "speedTypingText2": "Coding is a journey of constant learning and problem solving.",
   "speedTypingText3": "Never stop exploring the endless possibilities of programming.",
   "speedTypingText4": "JavaScript is a versatile language used for both frontend and backend.",
-  "speedTypingText5": "Focus on practice to improve your speed and accuracy in typing."
+  "speedTypingText5": "Focus on practice to improve your speed and accuracy in typing.",
+  "speedTypingTest":{
+    "titletest":"Speed Typing Test",
+    "yourspeed": "Your speed",
+    "errors": "Errors",
+    "startPrompt": "Press 'Start Test' to see the text",
+    "stop": "End",
+    "start": "Start test",
+    "change": "Change text",
+    "wordtime":"word/min"
+  }
 }

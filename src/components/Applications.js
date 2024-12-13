@@ -34,7 +34,7 @@ function Applications() {
           </div>
 
           {/* Кнопка для генератора цитат */}
-          <div className="col-lg-3 col-md-4 col-12 mb-4 text-center">
+          <div className="col-lg-3 col-md-4 col-12 mb-4 text-center quote-app">
             <button className="btn btn-info w-100" onClick={handleOpenQuoteModal}>
               {t('showQuoteGenerator')}
             </button>

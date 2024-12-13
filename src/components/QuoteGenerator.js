@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function QuoteGenerator({ closeModal }) {
   const [quote, setQuote] = useState('');
   const [author, setAuthor] = useState('');
   const [loading, setLoading] = useState(false);
   const [timer, setTimer] = useState(20); // Таймер для автоматического закрытия окна
+  const { t } = useTranslation();
 
   // Функция для получения цитаты
   const fetchQuote = async () => {
@@ -25,7 +27,7 @@ function QuoteGenerator({ closeModal }) {
       setAuthor("Автор неизвестен");
     }
   } catch (error) {
-    console.error("Ошибка при загрузке цитаты:", error.message);
+    console.error(`Ошибка при загрузке цитаты: ${error.message}`, error);
     setQuote("Не удалось загрузить цитату. Попробуйте снова.");
     setAuthor("");
   } finally {
@@ -39,18 +41,20 @@ function QuoteGenerator({ closeModal }) {
     fetchQuote(); // Получаем новую цитату
   };
 
-  // Эффект для автоматического закрытия модального окна через 20 секунд
-  useEffect(() => {
-    const countdown = setInterval(() => {
-      setTimer((prevTimer) => prevTimer - 1);
-    }, 1000);
+useEffect(() => {
+  const countdown = setInterval(() => {
+    setTimer((prevTimer) => {
+      if (prevTimer === 1) {
+        closeModal(); // Закрытие окна, если таймер истек
+        return 0;
+      }
+      return prevTimer - 1;
+    });
+  }, 1000);
 
-    if (timer === 0) {
-      closeModal(); // Закрытие окна, если таймер истек
-    }
+  return () => clearInterval(countdown); // Очистка интервала при закрытии окна
+}, [closeModal]);
 
-    return () => clearInterval(countdown); // Очистка интервала при закрытии окна
-  }, [timer, closeModal]);
 
   // Эффект для получения цитаты при загрузке модального окна
   useEffect(() => {
@@ -62,9 +66,9 @@ function QuoteGenerator({ closeModal }) {
       <div style={modalStyle}>
         <button onClick={closeModal} style={closeButtonStyle}>×</button>
         <div style={{ padding: '20px', textAlign: 'center' }}>
-          <h2>Случайная Цитата</h2>
+          <h2>{t('quotegenerator.title')}</h2>
           {loading ? (
-            <p>Загружаем...</p>
+            <p>{t('quotegenerator.load')}</p>
           ) : (
             <div>
               <p>"{quote}"</p>
@@ -76,9 +80,11 @@ function QuoteGenerator({ closeModal }) {
             className="btn btn-primary"
             style={{ margin: '10px' }}
           >
-            Получить другую цитату
+            {t('quotegenerator.otherquote')}
           </button>
-          <p>Цитата исчезнет через {timer} секунд</p>
+       <p style={{ color: timer <= 5 ? 'red' : 'black' }}>
+          {t('quotegenerator.timerMessage', { count: timer })}
+        </p>
         </div>
       </div>
     </div>

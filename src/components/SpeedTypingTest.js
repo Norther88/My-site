@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
+
 function SpeedTypingTest({ showModal, onClose }) {
   const { t } = useTranslation();
   const [inputText, setInputText] = useState('');
@@ -122,9 +123,9 @@ function SpeedTypingTest({ showModal, onClose }) {
       <div style={modalStyle}>
         <button onClick={onClose} style={closeButtonStyle}>×</button>
         <div style={{ padding: '20px' }}>
-          <h1 style={{ marginBottom: '20px' }}>Тест на скорость печати</h1>
+          <h1 style={{ marginBottom: '20px' }}>{t('speedTypingTest.titletest')}</h1>
           <p style={{ fontWeight: 'bold', fontSize: '18px', marginBottom: '10px' }}>
-            {textToType || "Нажмите 'Начать тест', чтобы увидеть текст"}
+            {textToType || t('speedTypingTest.startPrompt')}
           </p>
           <div style={{ fontSize: '18px', marginBottom: '20px' }}>
             {highlightErrors(inputText)}
@@ -135,22 +136,22 @@ function SpeedTypingTest({ showModal, onClose }) {
               <>
                 <p>Осталось времени: {timeLeft} секунд</p>
                 <button onClick={stopTest} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer', marginRight: '10px' }}>
-                  Стоп
+                  {t('speedTypingTest.stop')}
                 </button>
               </>
             ) : (
               <>
                 <button onClick={startTest} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer', marginRight: '10px' }}>
-                  Начать тест
+                 {t('speedTypingTest.start')}
                 </button>
                 <button onClick={changeText} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>
-                  Сменить текст
+                  {t('speedTypingTest.change')}
                 </button>
               </>
             )}
-            {timeLeft === 0 && <p style={{ marginTop: '20px' }}>Ваша скорость: {speed} слов/мин</p>}
-            {speed > 0 && !started && <p style={{ marginTop: '20px' }}>Ваша скорость: {speed} слов/мин</p>}
-            <p>Ошибки: {errors}</p>
+            {timeLeft === 0 && <p style={{ marginTop: '20px' }}>{t('speedTypingTest.yourspeed')}: {speed} {t('speedTypingTest.wordtime')}</p>}
+            {speed > 0 && !started && <p style={{ marginTop: '20px' }}>{t('speedTypingTest.yourspeed')}: {speed} {t('speedTypingTest.wordtime')}</p>}
+            <p>{t('speedTypingTest.errors')}: {errors}</p>
           </div>
         </div>
       </div>
